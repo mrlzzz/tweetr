@@ -146,6 +146,6 @@ function isLoggedIn(req, res, next){
     }
 };
 
-app.listen(3040, function(req, res){
+app.listen(process.env.PORT || 3040, function(req, res){
     console.log("Server started.");
 });
