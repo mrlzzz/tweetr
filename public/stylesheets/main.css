@@ -1,0 +1,113 @@
+html {
+
+}
+#body {
+    background-color: #fbf4e8;
+}
+.profile {
+    background-color: white;
+    border: solid lightpink 1px;
+    position:sticky;
+    top: 50px;
+    height: 100px;
+    transition-duration: 0.25s;
+    text-align: right;
+
+}
+.profile a {
+    display: block;
+    height: 50px;
+
+    font-size: 1.25em;
+
+    position: relative;
+    padding-right: 10px;
+    padding-top: 8px
+}
+#username {
+    background-color: lightpink;
+    color: #3b3b3b;
+
+}
+#new-post {
+
+    color: #ff5ba2;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+#new-post:hover {
+    color: rgba(255, 91, 162, 0.58);
+    transition-duration: 0.25s;
+}
+.profile img {
+    background-color: #dedede;
+    border: solid white 4px;
+    object-fit: cover;
+    width:80px;
+    height:80px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.tweet {
+    background-color: white;
+    border: solid pink 1px;
+    padding: 15px;
+    margin-top: 5px;
+}
+.tweet:first-of-type{
+    margin-top: 0px;
+}
+.tweet img {
+    border: solid lightpink 1px;
+    width:50px;
+    height:50px;
+    object-fit: cover;
+}
+.tweet .author {
+    color: #ff5ba2;
+    font-size: 0.9em;
+}
+.form-tweet {
+    padding: 15px;
+    margin-bottom: 5px;
+    border: solid 1px #d0d0d0;
+    background-color: #f8f9fa;
+}
+.form-tweet .form-control {
+    background-color: white;
+    border: solid 1px #d0d0d0;
+}
+.form-login {
+    padding: 15px;
+    border: solid 1px pink;
+    background-color: white;
+}
+.form-login .form-control{
+    background-color: white;
+    border: solid 1px pink;
+}
+
+.form-group textarea {
+    resize: none;
+}
+.navbar {
+    margin-bottom: 20px;
+    padding: 3px !important;
+    -webkit-box-shadow: 1px -22px 33px 0px rgba(0,0,0,0.8);
+    -moz-box-shadow: 1px -22px 33px 0px rgba(0,0,0,0.8);
+    box-shadow: 1px -22px 33px 0px rgba(0,0,0,0.8);
+}
+
+/*padding for center*/
+#logo {
+    color:#ff5ba2;
+    font-size: 1.75em;
+    padding-left:50%;
+
+}
+
+

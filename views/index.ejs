@@ -1,0 +1,50 @@
+<!--TODO-->
+<!--Responsiveness - objects shrink with browser window, realted to "width"-->
+
+<% include ./partials/header.ejs %>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 rounded" style="padding: 0" >
+                <% if(currentUser) { %>
+                <div class="profile rounded" data-spy="affix" data-offset-top="200">
+                    <a id="username">@<%= currentUser.username %></a>
+                    <a id="new-post"  data-toggle="collapse" data-target="#form" href="#re">New Post</a>
+                    <img class="rounded-circle" src="<%= currentUser.image %>" alt="Image placeholder">
+                </div>
+                <% } else { %>
+                <h1>Log in boi.</h1>
+                <% } %>
+        </div>
+        <div class="col-md-6">
+            <div class="collapse" id="form">
+                <form class="form-tweet rounded" action="/index" method="POST">
+                    <div id="re" class="form-group">
+                        <textarea id="textarea" class="form-control" rows="4" name="tweet[text]"></textarea>
+                    </div>
+                    <button class="btn btn-outline-info">Tw@t!</button>
+                </form>
+            </div>
+            <ul class="list-unstyled">
+                <% if(tweet) { %>
+                    <% for(var i = tweet.length - 1 ; i >= 0 ; i--) { %>
+                        <li class="media tweet rounded">
+                            <img class="d-flex rounded-circle mr-3" src="<%=tweet[i].author.image%>" alt="">
+                            <div class="media-body">
+                                <p class="author"><%=tweet[i].author.name%> - 2 days ago</p>
+                                <p><%=tweet[i].text%></p>
+
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<% include ./partials/footer.ejs %>
+
