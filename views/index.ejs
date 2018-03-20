@@ -9,7 +9,7 @@
         <div class="col-md-3 rounded">
                 <% if(currentUser) { %>
                 <div class="profile rounded" data-spy="affix" data-offset-top="200">
-                    <a id="username">@<%= currentUser.username %></a>
+                    <a id="nickname">@<%= currentUser.username %></a>
                     <a id="new-post"  data-toggle="collapse" data-target="#form" href="#re">New Post</a>
                     <img class="rounded-circle" src="<%= currentUser.image %>" alt="Image placeholder">
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-6">
             <div class="collapse" id="form">
-                <form class="form-tweet rounded" action="/index" method="POST">
+                <form class="form-tweet rounded" action="/tweets" method="POST">
                     <div id="re" class="form-group">
                         <textarea id="textarea" class="form-control" rows="4" name="tweet[text]"></textarea>
                     </div>
