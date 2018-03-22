@@ -1,6 +1,29 @@
 var express = require("express"),
     router  = express.Router({mergeParams: true}),
     User    = require("../models/user");
+    path    = require("path");
+
+var multer = require('multer');
+var storage = multer.diskStorage({
+    filename: function(req, file, callback) {
+        callback(null, Date.now() + file.originalname);
+    }
+});
+var imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+var upload = multer({ storage: storage, fileFilter: imageFilter})
+
+var cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: 'dn7qjjhpj',
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 //LANDING route
 router.get("/", function(req, res){
@@ -12,20 +35,27 @@ router.get("/register", function(req, res){
     res.render("register");
 });
 
-router.post("/register", function(req, res){
-    var newUser = new User({
-        username: req.body.username,
-        image: req.body.image
-    });
-    User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            console.log(err);
-            return res.render("register");
-        } else {
-            passport.authenticate("local")(req, res, function(){
-                res.redirect("/tweets");
-            });
-        }
+router.post("/register", upload.single('uploadImage'), function(req, res){
+    console.log(req);
+    cloudinary.uploader.upload(req.file.path, function(result) {
+
+        // var userImage = req.body.image;
+        var userImage = result.secure_url;
+
+        var newUser = new User({
+            username: req.body.username,
+            image: userImage
+        });
+        User.register(newUser, req.body.password, function(err, user){
+            if(err){
+                console.log(err);
+                return res.render("register");
+            } else {
+                passport.authenticate("local")(req, res, function(){
+                    res.redirect("/tweets");
+                });
+            }
+        });
     });
 });
 

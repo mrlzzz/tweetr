@@ -5,7 +5,8 @@ var express        = require("express");
 //AUTHENTICATION PACKAGES
     passport       = require("passport"),
     LocalStrategy  = require("passport-local"),
-    expressSession = require("express-session");
+    expressSession = require("express-session"),
+    require('dotenv').config();
 
 var tweetsRoutes = require("./routes/tweets"),
     indexRoutes  = require("./routes/index");
@@ -36,6 +37,8 @@ app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     next();
 });
+
+app.locals.moment = require('moment');
 
 //LANDING ROUTE
 
