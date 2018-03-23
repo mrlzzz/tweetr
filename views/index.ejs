@@ -1,23 +1,30 @@
 <!--TODO-->
-<!--Responsiveness - objects shrink with browser window, realted to "width"-->
+<!--Responsiveness - objects shrink with browser window, related to "width"-->
+<!--Internal Server Error when register with existing name account-->
+<!--Add upload image in textarea input-->
+<!--Add AJAX -> likes, @s, smooth new post-->
+<!--Show personal post when click on username-->
+<!--Limit username length - fucks up UI-->
+<!--Remove inline styling-->
+<!--Improve page detection-->
 
 <% include ./partials/header.ejs %>
 
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3 rounded">
+        <div class="col-md-4 col-lg-3 rounded">
                 <% if(currentUser) { %>
                 <div class="profile rounded" data-spy="affix" data-offset-top="200">
                     <a id="nickname">@<%= currentUser.username %></a>
-                    <a id="new-post"  data-toggle="collapse" data-target="#form" href="#re">New Post</a>
+                    <a id="new-post"  data-toggle="collapse" data-target="#form" href="">New Post</a>
                     <img class="rounded-circle" src="<%= currentUser.image %>" alt="Image placeholder">
                 </div>
                 <% } else { %>
                 <h1>Log in boi.</h1>
                 <% } %>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8 col-lg-6">
             <div class="collapse" id="form">
                 <form class="form-tweet rounded" action="/tweets" method="POST">
                     <div id="re" class="form-group">
@@ -32,8 +39,11 @@
                         <li class="media tweet rounded">
                             <img class="d-flex rounded-circle mr-3" src="<%=tweet[i].author.image%>" alt="">
                             <div class="media-body">
-                                <p class="author"><%=tweet[i].author.name%> - 2 days ago</p>
-                                <p><%=tweet[i].text%></p>
+                                <p>
+                                    <span class="author"><%=tweet[i].author.name%></span>
+                                    <span class="date"> - <%=moment(tweet[i].createdAt).fromNow()%></span>
+                                </p>
+                                <p><%-tweet[i].text%></p>
                             </div>
                         </li>
                     <% } %>

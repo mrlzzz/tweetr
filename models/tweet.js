@@ -6,7 +6,7 @@ var tweetSchema = new mongoose.Schema({
         image: String
     },
     text: String,
-    created: {type: Date, default: Date.now}
+    createdAt: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model("Tweet", tweetSchema);

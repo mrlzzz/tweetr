@@ -8,14 +8,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='shortcut icon' type='image/x-icon' href='favicons/favicon.ico' />
     <script defer src="fontawesome/fontawesome-all.js"></script>
-    <script>
-        $("#new-post").click(function(e) {
-            $("#textarea").focus();
-        });
-    </script>
 </head>
 <body id="body">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+
+    <nav id="scroll" class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/tweets">Tw@tter</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -25,7 +21,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-
                     </li>
                 </ul>
                 <ui class="navbar-nav mr-auto">
@@ -36,8 +31,9 @@
                 <ul class="navbar-nav">
                     <% if(!currentUser) { %>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/login" >Log In</a>
+                            <a class="nav-link" href="/login" >Log In</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/register">Sign Up</a>
                         </li>

@@ -11,9 +11,12 @@ var express        = require("express");
 var tweetsRoutes = require("./routes/tweets"),
     indexRoutes  = require("./routes/index");
 
+var page = "";
+
 mongoose.connect("mongodb://morel:morel@ds111299.mlab.com:11299/mrlx-clone");
 
 app = express();
+app.locals.moment = require('moment');
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -31,24 +34,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 //GLOBAL VARIABLES
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.page = page;
     next();
 });
-
-app.locals.moment = require('moment');
-
-//LANDING ROUTE
-
-
-
-
-
-
-
-
 
 app.use(tweetsRoutes);
 app.use(indexRoutes);

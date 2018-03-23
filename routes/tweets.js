@@ -16,7 +16,7 @@ router.get("/tweets", middleware.isLoggedIn, function(req, res){
 });
 
 //CREATE route
-router.post("/tweets", middleware.isLoggedIn, function(req, res){
+router.post("/tweets", middleware.isLoggedIn, middleware.checkForLinks, function(req, res){
     var tweet = {
         author: {
             name: req.user.username,
@@ -24,7 +24,7 @@ router.post("/tweets", middleware.isLoggedIn, function(req, res){
         },
         text: req.body.tweet.text,
     };
-    console.log(tweet);
+
     Tweet.create(tweet, function(err, createdTweet){
         if(err){
             console.log(err);

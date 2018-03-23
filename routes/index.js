@@ -1,7 +1,6 @@
 var express = require("express"),
     router  = express.Router({mergeParams: true}),
     User    = require("../models/user");
-    path    = require("path");
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -32,7 +31,8 @@ router.get("/", function(req, res){
 
 //USER FORM GET
 router.get("/register", function(req, res){
-    res.render("register");
+    page = "register";
+    res.render("register", {page: page});
 });
 
 router.post("/register", upload.single('uploadImage'), function(req, res){
@@ -60,7 +60,8 @@ router.post("/register", upload.single('uploadImage'), function(req, res){
 });
 
 router.get("/login", function(req, res){
-    res.render("login");
+    page = "login";
+    res.render("login", {page: page});
 });
 
 router.post("/login", passport.authenticate("local", {
