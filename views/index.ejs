@@ -30,11 +30,12 @@
                     <div id="re" class="form-group">
                         <textarea id="textarea" class="form-control" rows="4" name="tweet[text]"></textarea>
                     </div>
-                    <button class="btn btn-outline-info">Tw@t!</button>
+                    <button class="btn btn-outline-info">Tweet!</button>
                 </form>
             </div>
             <ul class="list-unstyled">
                 <% if(tweet) { %>
+                <% console.log(tweet.length)%>
                     <% for(var i = tweet.length - 1 ; i >= 0 ; i--) { %>
                         <li class="media tweet rounded">
                             <img class="d-flex rounded-circle mr-3" src="<%=tweet[i].author.image%>" alt="">
