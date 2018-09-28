@@ -3,6 +3,7 @@ html {
 #body {
     background-color: #fbf4e8;
     min-height: 1080px;
+    padding-bottom: 100px;
 }
 .profile {
     background-color: white;
@@ -157,6 +158,3 @@ hr{
 /*.navbar-custom .nav-item:hover .nav-link {*/
     /*color: #ffffff;*/
 /*}*/
-
-
-
